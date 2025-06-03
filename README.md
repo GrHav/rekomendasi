@@ -65,6 +65,13 @@ Karena dataset tidak mengandung feedback pengguna, evaluasi kuantitatif mengguna
 
 **---Ini adalah bagian akhir laporan---**
 
-_Catatan:_
-- _Anda dapat menambahkan gambar, kode, atau tabel ke dalam laporan jika diperlukan. Temukan caranya pada contoh dokumen markdown di situs editor [Dillinger](https://dillinger.io/), [Github Guides: Mastering markdown](https://guides.github.com/features/mastering-markdown/), atau sumber lain di internet. Semangat!_
-- Jika terdapat penjelasan yang harus menyertakan code snippet, tuliskan dengan sewajarnya. Tidak perlu menuliskan keseluruhan kode project, cukup bagian yang ingin dijelaskan saja.
+Referensi
+Aggarwal, C. C. (2016). Recommender Systems: The Textbook. Springer.
+
+Ricci, F., Rokach, L., & Shapira, B. (2015). Recommender Systems Handbook. Springer.
+
+Mikolov, T., Chen, K., Corrado, G., & Dean, J. (2013). Efficient Estimation of Word Representations in Vector Space. arXiv preprint arXiv:1301.3781.
+
+Manning, C. D., Raghavan, P., & Schütze, H. (2008). Introduction to Information Retrieval. Cambridge University Press.
+
+Dataset Grocery Item Classification, Kaggle: https://www.kaggle.com/datasets/kaustubhb999/grocery-item-classification
