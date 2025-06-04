@@ -120,7 +120,7 @@ Karena tidak tersedia data eksplisit dari pengguna (seperti rating), maka evalua
 - Recall: Mengukur seberapa banyak film relevan yang berhasil direkomendasikan dari seluruh kemungkinan film yang relevan.
 Evaluasi kuantitatif dengan metrik seperti RMSE atau MAE tidak dilakukan karena model tidak memprediksi rating.
 
-## Memnjawab Problem Statements
+## Menjawab Problem Statements
 1. Bagaimana membantu pengguna menemukan film yang relevan dan sesuai dengan minat mereka?
 - Sistem menggunakan teknik TF-IDF untuk mengekstrak fitur genre dan cosine similarity untuk menghitung kemiripan antar film. Dengan pendekatan ini, sistem mampu memberikan rekomendasi film yang memiliki genre serupa dengan film yang telah disukai sebelumnya.
 - Contoh: Pengguna mencari film “Jumanji”, sistem merekomendasikan film lain dengan genre petualangan dan fantasi seperti:
