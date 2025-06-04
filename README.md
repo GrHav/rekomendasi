@@ -29,7 +29,7 @@ Referensi : Ricci, F., Rokach, L., & Shapira, B. (2015). Recommender Systems Han
 ## Data Understanding
 
 ### Dataset
-Dataset yang digunakan adalah Movie Genre from its Poster dari Kaggle, yang berisi informasi seperti:
+Dataset yang digunakan adalah Movie Genre from its Poster dari [Kaggle](https://www.kaggle.com/datasets/neha1703/movie-genre-from-its-poster), yang berisi informasi seperti:
 - Title: Judul film
 - Genre: Kumpulan genre film
 - IMDB Score: Skor film (tidak digunakan dalam model utama)
