@@ -2,76 +2,94 @@
 
 ## Project Overview
 
-Perkembangan pesat teknologi digital memungkinkan ribuan lowongan pekerjaan diunggah secara online setiap hari. Namun, pencari kerja seringkali kesulitan untuk menemukan pekerjaan yang sesuai dengan keterampilan dan preferensi mereka karena banyaknya pilihan yang tersedia. Hal ini menyebabkan kebutuhan akan sistem rekomendasi pekerjaan yang mampu menyaring dan menyajikan peluang kerja yang relevan secara personal.
+Industri hiburan yang berkembang pesat telah menghasilkan ribuan film baru setiap tahunnya. Banyaknya pilihan ini seringkali menyulitkan penonton untuk menemukan film yang sesuai dengan preferensi mereka. Oleh karena itu, sistem rekomendasi menjadi alat penting untuk menyaring dan menyajikan film-film yang relevan berdasarkan minat pengguna (Ricci et al., 2015).
 
-Menurut riset oleh Ricci et al. (2015), sistem rekomendasi dapat meningkatkan pengalaman pengguna dengan memberikan pilihan yang sesuai berdasarkan preferensi sebelumnya. Oleh karena itu, pembangunan sistem rekomendasi pekerjaan yang efektif sangat penting untuk membantu pencari kerja dalam mempercepat proses pencarian dan pengambilan keputusan.
+Dalam proyek ini, dikembangkan sistem rekomendasi film berbasis content-based filtering menggunakan data film dari Kaggle. Sistem ini menggunakan pendekatan TF-IDF (Term Frequency-Inverse Document Frequency) dan cosine similarity untuk menghitung kemiripan antar film berdasarkan informasi genre-nya. Pendekatan ini telah terbukti efektif dalam sistem rekomendasi berbasis konten, terutama ketika data pengguna tidak tersedia atau sangat terbatas (Aggarwal, 2016; Manning et al., 2008).
+
+Sistem ini ditujukan untuk membantu pengguna menemukan film dengan genre yang serupa dengan film yang mereka sukai sebelumnya, tanpa memerlukan data interaksi pengguna seperti rating atau ulasan. Dataset yang digunakan adalah Movie Genre from its Poster (Kaggle, 2018), yang menyediakan informasi judul, genre, dan URL poster film. Sistem ini dirancang untuk memberikan hasil yang dapat dijelaskan secara intuitif berdasarkan kemiripan genre.
+
+Referensi : Ricci, F., Rokach, L., & Shapira, B. (2015). Recommender Systems Handbook. Springer, Aggarwal, C. C. (2016). Recommender Systems: The Textbook. Springer, Manning, C. D., Raghavan, P., & Schütze, H. (2008). Introduction to Information Retrieval. Cambridge University Press, Kaggle. (2018). Movie Genre from its Poster. Retrieved from: https://www.kaggle.com/datasets/neha1703/movie-genre-from-its-poster.
 
 ## Business Understanding
 
 ### Problem Statements
-1. Bagaimana membantu pencari kerja menemukan pekerjaan yang relevan dan sesuai dengan profil mereka?
-2. Bagaimana menyajikan rekomendasi pekerjaan berdasarkan informasi pekerjaan yang tersedia, mengingat minimnya data interaksi pengguna?
-3. Bagaimana mengukur efektivitas sistem rekomendasi dalam memberikan saran pekerjaan?
+1. Bagaimana membantu pengguna menemukan film yang relevan dan sesuai dengan minat mereka?
+2. Bagaimana menyajikan rekomendasi film berdasarkan genre film yang telah disukai pengguna?
+3. Bagaimana mengukur relevansi dan kemiripan antar film untuk menghasilkan rekomendasi yang akurat?
 
 ### Goals
-1. Membangun sistem rekomendasi pekerjaan berbasis konten yang dapat merekomendasikan pekerjaan serupa berdasarkan deskripsi dan judul pekerjaan.
-2. Mengimplementasikan metode Content-Based Filtering menggunakan TF-IDF dan cosine similarity.
-3. Mengevaluasi performa sistem rekomendasi menggunakan metrik relevansi (precision dan recall secara konseptual).
+1. Mengembangkan sistem rekomendasi berbasis konten yang dapat menyarankan film berdasarkan genre yang serupa.
+2. Menggunakan teknik TF-IDF dan cosine similarity untuk menghitung kemiripan antar film.
+3. Memberikan antarmuka pemanggilan fungsi yang sederhana untuk melakukan pencarian film berdasarkan masukan judul film.
 
 ### Solution statements
-- Content-Based Filtering: Merekomendasikan pekerjaan berdasarkan kemiripan konten (job title, company, job description) menggunakan TF-IDF dan cosine similarity.
-- Collaborative Filtering (untuk proyek lanjutan): Menggunakan data interaksi pengguna (lamaran atau rating) untuk rekomendasi personalisasi.
+- Content-Based Filtering: Sistem menyarankan film yang memiliki kemiripan genre dengan film yang telah dipilih pengguna.
+- Sistem tidak memerlukan data pengguna atau interaksi historis, cukup mengandalkan konten film (genre).
 
 ## Data Understanding
 
-Dataset yang digunakan adalah data pekerjaan yang diunduh dari Kaggle: Jobs Data for Recommender Systems. Dataset ini berisi sekitar [jumlah baris dataset] entri pekerjaan dengan beberapa fitur seperti:
-- job_title : Judul pekerjaan, misalnya "Data Scientist"
-- company_name : Nama perusahaan penyedia pekerjaan
-- job_description : Deskripsi detail pekerjaan
-- Fitur lain seperti lokasi, kategori pekerjaan, dll.
+### Dataset
+Dataset yang digunakan adalah Movie Genre from its Poster dari Kaggle, yang berisi informasi seperti:
+- Title: Judul film
+- Genre: Kumpulan genre film
+- IMDB Score: Skor film (tidak digunakan dalam model utama)
+- Poster: URL poster film (tidak digunakan dalam model utama)
+Dataset ini awalnya berisi lebih dari 10.000 entri, namun untuk keperluan demonstrasi dan efisiensi eksperimen, proyek ini hanya mengambil 200 data film teratas yang memiliki informasi genre dan judul yang lengkap.
 
-Dataset mengandung data teks yang cukup beragam, sehingga perlu dilakukan pembersihan dan transformasi sebelum digunakan dalam model.
 
 ## Data Preparation
 
 Beberapa tahapan data preparation yang dilakukan:
-- Mengisi nilai kosong (null) pada kolom teks dengan string kosong agar tidak mengganggu proses ekstraksi fitur.
-- Menggabungkan kolom job_title, company_name, dan job_description menjadi satu fitur teks gabungan untuk representasi konten pekerjaan.
-- Membersihkan teks dari karakter atau format yang tidak diperlukan.
-- Menggunakan TF-IDF Vectorizer untuk mengubah teks gabungan menjadi representasi vektor numerik.
-- Menghitung matriks kesamaan kosinus antar pekerjaan untuk menentukan tingkat kemiripan pekerjaan satu sama lain.
-Tahapan ini penting agar data teks yang beragam dapat diproses menjadi bentuk yang dapat dianalisis oleh algoritma rekomendasi.
-
+- Penghapusan Nilai Kosong: Menghapus data yang memiliki nilai kosong pada kolom Title atau Genre.
+- Penghapusan Duplikasi: Menghapus entri duplikat berdasarkan kolom yang digunakan dengan drop_duplicated.
+- TF-IDF Vectorization: Mengubah genre menjadi representasi numerik menggunakan TF-IDF dengan mengabaikan stopwords bahasa Inggris.
+- Cosine Similarity Calculation: Menghitung kemiripan antar film menggunakan cosine similarity dari vektor TF-IDF.
+- Preprocessing Judul Film: Membersihkan judul dari tahun rilis agar fungsi pencarian tidak terpengaruh format nama.
+  
 ## Modeling
 
-Model utama yang dikembangkan adalah Content-Based Filtering yang merekomendasikan pekerjaan berdasarkan kemiripan konten.
-- Input: judul pekerjaan
-- Proses: cari pekerjaan lain dengan vektor TF-IDF yang paling mirip berdasarkan cosine similarity.
-- Output: daftar 10 pekerjaan dengan tingkat kemiripan tertinggi.
+Model utama yang digunakan adalah Content-Based Filtering.
+#### Input 
+Input : Judul film, misalnya "Jumanji"
+#### Proses
+- Bersihkan nama judul dari tahun (contoh: "Jumanji (1995)" → "jumanji")
+- Temukan indeks film dalam dataset
+- Hitung kemiripan cosine dengan semua film lainnya
+- Urutkan berdasarkan skor kemiripan
+- Ambil `n` film teratas (kecuali film itu sendiri)
+#### Output
+Rekomendasi 5 film dengan genre yang paling mirip, contohnya:
+- Mighty Morphin Power Rangers: The Movie
+- Across the Sea of Time
+- The Amazing Panda Adventure
+- Free Willy 2: The Adventure Home
+- Kids of the Round Table
 
 Kelebihan
-- Tidak memerlukan data interaksi pengguna, cocok untuk dataset dengan data pengguna terbatas.
-- Rekomendasi didasarkan pada konten pekerjaan, sehingga relevan dengan deskripsi pekerjaan.
+- Tidak memerlukan data pengguna atau feedback historis
+- Cocok untuk sistem rekomendasi baru (cold-start problem untuk pengguna baru)
+- Hasil rekomendasi mudah dijelaskan berdasarkan kemiripan konten
 
 Kekurangan
-- Tidak mempertimbangkan preferensi personal pengguna.
-- Rekomendasi terbatas pada kemiripan konten, kurang dapat mengeksplorasi pekerjaan yang berbeda tapi relevan.
+- Rekomendasi terbatas pada kemiripan konten (genre), tidak mempertimbangkan preferensi personal pengguna
+- Tidak bisa menyarankan film di luar genre yang biasa ditonton pengguna
 
 ## Evaluation
-Evaluasi utama dilakukan secara konseptual dengan pengukuran precision dan recall pada rekomendasi berdasarkan similarity score.
-- Precision mengukur proporsi rekomendasi yang relevan.
-- Recall mengukur proporsi pekerjaan relevan yang berhasil direkomendasikan.
-Karena dataset tidak mengandung feedback pengguna, evaluasi kuantitatif menggunakan metrik RMSE atau MAE seperti pada Collaborative Filtering tidak dapat dilakukan secara langsung.
-
-**---Ini adalah bagian akhir laporan---**
+#### Silhouette Score
+- Untuk mengevaluasi kualitas kemiripan antar film, dilakukan pengukuran Silhouette Score.
+- Hasil skor: 0.234, yang mengindikasikan bahwa struktur kemiripan antar film cukup lemah, namun tetap memberikan pemisahan kluster yang dapat dimanfaatkan.
+- Nilai ini bisa ditingkatkan dengan:
+    - Menambahkan fitur tambahan (misalnya deskripsi, sinopsis, aktor)
+    - Menggabungkan genre dengan metadata lainnya
+#### Evaluasi Konseptual
+Karena tidak tersedia data eksplisit dari pengguna (seperti rating), maka evaluasi dilakukan secara konseptual:
+- Precision: Mengukur seberapa relevan film yang direkomendasikan.
+- Recall: Mengukur seberapa banyak film relevan yang berhasil direkomendasikan dari seluruh kemungkinan film yang relevan.
+Evaluasi kuantitatif dengan metrik seperti RMSE atau MAE tidak dilakukan karena model tidak memprediksi rating.
 
 Referensi
-Aggarwal, C. C. (2016). Recommender Systems: The Textbook. Springer.
-
-Ricci, F., Rokach, L., & Shapira, B. (2015). Recommender Systems Handbook. Springer.
-
-Mikolov, T., Chen, K., Corrado, G., & Dean, J. (2013). Efficient Estimation of Word Representations in Vector Space. arXiv preprint arXiv:1301.3781.
-
-Manning, C. D., Raghavan, P., & Schütze, H. (2008). Introduction to Information Retrieval. Cambridge University Press.
-
-Dataset Grocery Item Classification, Kaggle: https://www.kaggle.com/datasets/kaustubhb999/grocery-item-classification
+- Aggarwal, C. C. (2016). Recommender Systems: The Textbook. Springer.
+- Ricci, F., Rokach, L., & Shapira, B. (2015). Recommender Systems Handbook. Springer.
+- Mikolov, T., Chen, K., Corrado, G., & Dean, J. (2013). Efficient Estimation of Word Representations in Vector Space. arXiv preprint arXiv:1301.3781.
+- Manning, C. D., Raghavan, P., & Schütze, H. (2008). Introduction to Information Retrieval. Cambridge University Press.
+- Dataset: Movie Genre from its Poster. Kaggle: https://www.kaggle.com/datasets/neha1703/movie-genre-from-its-poster
