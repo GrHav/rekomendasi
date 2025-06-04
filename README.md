@@ -44,11 +44,13 @@ Exploratory Data Analysis (EDA):
 ## Data Preparation
 
 Beberapa tahapan data preparation yang dilakukan:
-- Penghapusan Nilai Kosong: Menghapus data yang memiliki nilai kosong pada kolom Title atau Genre.
-- Penghapusan Duplikasi: Menghapus entri duplikat berdasarkan kolom yang digunakan dengan drop_duplicated.
-- TF-IDF Vectorization: Mengubah genre menjadi representasi numerik menggunakan TF-IDF dengan mengabaikan stopwords bahasa Inggris.
-- Cosine Similarity Calculation: Menghitung kemiripan antar film menggunakan cosine similarity dari vektor TF-IDF.
-- Preprocessing Judul Film: Membersihkan judul dari tahun rilis agar fungsi pencarian tidak terpengaruh format nama.
+- Penghapusan Kolom selain Title dan Genre
+- Penghapusan Nilai Kosong: Menghapus data yang memiliki nilai kosong pada kolom Title atau Genre dengan dropna.
+- Penghapusan Duplikasi: Menghapus entri duplikat berdasarkan kolom yang digunakan dengan drop_duplicates.
+- TF-IDF Vectorization: Mengubah genre menjadi representasi numerik menggunakan TF-IDF dengan mengabaikan stopwords bahasa Inggris (tfidf = TfidfVectorizer(stop_words='english')).
+- Matriks TF-IDF: mengubah kolom genre pada data menjadi vektor numerik menggunakan TF-IDF (tfidf_matrix = tfidf.fit_transform(df['Genre']))
+- Cosine Similarity Calculation: Menghitung kemiripan antar film menggunakan cosine similarity dari matriks TF-IDF yang baru dibuat (cosine_sim = cosine_similarity(tfidf_matrix, tfidf_matrix)).
+- Preprocessing Judul Film: Membersihkan judul dari tahun rilis agar fungsi pencarian tidak terpengaruh format nama dengan membuat fungsi clean_title untuk membersihkannya.
   
 ## Modeling
 
