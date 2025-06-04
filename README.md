@@ -67,7 +67,7 @@ Kekurangan:
   
 Parameter yang digunakan di dalam proyek ini adalah:
 - stop_words='english'. Dimana stop word yang dihilangkan adalah stop word dalam bahasa inggris.
-- 
+  
 ## Modeling
 
 Model utama yang digunakan adalah Content-Based Filtering menggunakan TF-IDF dan Cosine Similarity.
