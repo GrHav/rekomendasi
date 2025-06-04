@@ -114,6 +114,15 @@ Kekurangan
 - Nilai ini bisa ditingkatkan dengan:
     - Menambahkan fitur tambahan (misalnya deskripsi, sinopsis, aktor)
     - Menggabungkan genre dengan metadata lainnya
+#### Recall dan Precision
+- Pada model ini mendapatkan precision berupa 0.73 dan recall berupa 1.00 pada saat pengujian input judul berupa Jumanji dengan genre action, adventure, family.
+#### Precision
+Precision mengukur berapa banyak dari film yang direkomendasikan itu benar-benar relevan dengan film input. Dalam hal ini, relevansi biasanya dihitung berdasarkan genre yang cocok.
+Jika precision = 0.73, artinya sekitar 73% dari genre dalam film rekomendasi cocok atau relevan dengan genre film Jumanji. Ini menunjukkan bahwa sebagian besar rekomendasi genre-nya sesuai.
+#### Recall
+Recall mengukur seberapa lengkap sistem menangkap genre dari film input dalam rekomendasi yang diberikan.
+Jika recall = 1.00, artinya tidak ada genre penting pada film input dilewatkan. Dapat diartikan bahwa sistem mampu menangkap semua aspek genre film input dalam rekomendasi yang diberikan. Mungkin ada genre lain yang tidak relevan akan tetapi sisi kelengkapan genre input dalam rekomendasi sudah sangat baik
+
 #### Evaluasi Konseptual
 Karena tidak tersedia data eksplisit dari pengguna (seperti rating), maka evaluasi dilakukan secara konseptual:
 - Precision: Mengukur seberapa relevan film yang direkomendasikan.
