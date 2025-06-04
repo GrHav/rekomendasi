@@ -56,10 +56,12 @@ Beberapa tahapan data preparation yang dilakukan:
 
 ### TF-IDF 
 Fungsi utama : digunakan untuk mengukur kepentingan suatu kata dalam sebuah dokumen relatif terhadap seluruh kumpulan dokumen.
+
 Kelebihan :
 - Sederhana dan cepat untuk diimplementasikan
 - Efektif untuk menyeleksi kata-kata penting dan mengabaikan kata umum
 - Cocok untuk dokumen teks pendek maupun panjang
+
 Kekurangan:
 - Tidak menangkap makna konteks atau sinonim
 - Tidak mempertimbangkan urutan kata
@@ -73,10 +75,12 @@ Parameter yang digunakan di dalam proyek ini adalah:
 Model utama yang digunakan adalah Content-Based Filtering menggunakan TF-IDF dan Cosine Similarity.
 ### Cosine Similarity
 Fungsi utama : digunakan untuk mengukur kemiripan antara dua vektor teks berdasarkan sudut diantara keduanya dalam ruang vektor.
+
 Kelebihan :
 - Cocok untuk data berdimensi tinggi
 - Tidak terpengaruh oleh panjang dokumen
 - Efisien untuk mengukur kemiripan konten berbasis kata
+
 Kekurangan:
 - Tidak mempertimbangkan kata-kata semantik
 - Bergantung pada representasi vektor
