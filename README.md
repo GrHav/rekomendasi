@@ -145,16 +145,23 @@ Rekomendasi tersebut relevan karena berbagi genre yang serupa, sehingga sistem t
        - Tidak memerlukan data pengguna atau interaksi historis
        - Efektif dalam konteks cold-start problem untuk pengguna baru
 - Keterbatasan:
-Rekomendasi hanya berdasarkan genre, sehingga bisa kurang akurat bila pengguna menginginkan pertimbangan lain seperti alur cerita, sutradara, atau aktor.
+       - Rekomendasi hanya berdasarkan genre, sehingga bisa kurang akurat bila pengguna menginginkan pertimbangan lain seperti alur cerita, sutradara, atau aktor.
+       - Bisa terjadi tumpang tindih genre yang membuat rekomendasi kurang spesifik.
 
 3. Bagaimana mengukur relevansi dan kemiripan antar film untuk menghasilkan rekomendasi yang akurat?
-- Pengukuran relevansi dan kemiripan dilakukan dengan cosine similarity terhadap vektor TF-IDF yang mewakili genre film.
+- Pengukuran relevansi dan kemiripan dilakukan dengan:
+       - Menggunakan cosine similarity antar vektor TF-IDF yang mewakili genre film.
+       - Semakin tinggi nilai cosine similarity, semakin mirip genre film-film tersebut.
 - Evaluasi Kualitatif:
 Manual inspection terhadap hasil rekomendasi menunjukkan bahwa film-film yang direkomendasikan memiliki genre yang serupa dan masuk akal secara tematis.
--  Evaluasi Kuantitatif (Opsional - Eksploratif):
+- Evaluasi Kuantitatif (Opsional - Eksploratif):
      - Silhouette Score digunakan untuk mengevaluasi seberapa baik film dikelompokkan berdasarkan kemiripan genre.
      - Hasil Silhouette Score = 0.234, yang meskipun tidak tinggi, menunjukkan ada struktur yang dapat dimanfaatkan dalam sistem.
+- Precision dan Recall:
+     -  Precision menunjukkan seberapa banyak genre dalam rekomendasi memang relevan dengan film input (dalam contoh 0.73 berarti 73% genre rekomendasi cocok).
+     -  Recall menunjukkan seberapa lengkap genre film input berhasil tercakup dalam rekomendasi (dalam contoh recall 1.00 berarti semua genre input berhasil ditemukan di rekomendasi).
 
+Dengan pendekatan ini, sistem dapat memberikan rekomendasi yang cukup relevan dan membantu pengguna dalam menemukan film sesuai preferensi genre mereka, meskipun masih ada ruang untuk pengembangan lebih lanjut dengan menambah fitur lain.
 
 Referensi
 - Aggarwal, C. C. (2016). Recommender Systems: The Textbook. Springer.
