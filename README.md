@@ -30,6 +30,8 @@ Referensi : Ricci, F., Rokach, L., & Shapira, B. (2015). Recommender Systems Han
 
 ### Dataset
 Dataset yang digunakan adalah Movie Genre from its Poster dari [Kaggle](https://www.kaggle.com/datasets/neha1703/movie-genre-from-its-poster), yang berisi informasi seperti:
+- IMDBID: id dari IMDB
+- Imdb Link : link untuk menuju IMDB film
 - Title: Judul film
 - Genre: Kumpulan genre film
 - IMDB Score: Skor film (tidak digunakan dalam model utama)
@@ -37,7 +39,8 @@ Dataset yang digunakan adalah Movie Genre from its Poster dari [Kaggle](https://
 
 Dataset ini awalnya berisi lebih dari 10.000 entri, namun untuk keperluan demonstrasi dan efisiensi eksperimen, proyek ini hanya mengambil 200 data film teratas yang memiliki informasi genre dan judul yang lengkap.
 
-
+Exploratory Data Analysis (EDA):
+- Visualisasi data yang missing lumayan banyak pada kolom genre dan dan poster
 ## Data Preparation
 
 Beberapa tahapan data preparation yang dilakukan:
