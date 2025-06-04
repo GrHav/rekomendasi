@@ -34,6 +34,7 @@ Dataset yang digunakan adalah Movie Genre from its Poster dari [Kaggle](https://
 - Genre: Kumpulan genre film
 - IMDB Score: Skor film (tidak digunakan dalam model utama)
 - Poster: URL poster film (tidak digunakan dalam model utama)
+
 Dataset ini awalnya berisi lebih dari 10.000 entri, namun untuk keperluan demonstrasi dan efisiensi eksperimen, proyek ini hanya mengambil 200 data film teratas yang memiliki informasi genre dan judul yang lengkap.
 
 
