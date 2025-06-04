@@ -53,10 +53,7 @@ Beberapa tahapan data preparation yang dilakukan:
 - Matriks TF-IDF: mengubah kolom genre pada data menjadi vektor numerik menggunakan TF-IDF (tfidf_matrix = tfidf.fit_transform(df['Genre']))
 - Cosine Similarity Calculation: Menghitung kemiripan antar film menggunakan cosine similarity dari matriks TF-IDF yang baru dibuat (cosine_sim = cosine_similarity(tfidf_matrix, tfidf_matrix)).
 - Preprocessing Judul Film: Membersihkan judul dari tahun rilis agar fungsi pencarian tidak terpengaruh format nama dengan membuat fungsi clean_title untuk membersihkannya.
-  
-## Modeling
 
-Model utama yang digunakan adalah Content-Based Filtering menggunakan TF-IDF dan Cosine Similarity.
 ### TF-IDF 
 Fungsi utama : digunakan untuk mengukur kepentingan suatu kata dalam sebuah dokumen relatif terhadap seluruh kumpulan dokumen.
 Kelebihan :
@@ -70,7 +67,10 @@ Kekurangan:
   
 Parameter yang digunakan di dalam proyek ini adalah:
 - stop_words='english'. Dimana stop word yang dihilangkan adalah stop word dalam bahasa inggris.
+- 
+## Modeling
 
+Model utama yang digunakan adalah Content-Based Filtering menggunakan TF-IDF dan Cosine Similarity.
 ### Cosine Similarity
 Fungsi utama : digunakan untuk mengukur kemiripan antara dua vektor teks berdasarkan sudut diantara keduanya dalam ruang vektor.
 Kelebihan :
@@ -81,6 +81,15 @@ Kekurangan:
 - Tidak mempertimbangkan kata-kata semantik
 - Bergantung pada representasi vektor
 - Tidak mempertimbangkan urutan kata
+
+Cara kerja Content-Based Filtering menggunakan TF-IDF dan Cosine Similarity adalah sebagai berikut:
+1. Dalam sistem rekomendasi Content-Based Filtering ini, pendekatan utama yang digunakan adalah representasi teks menggunakan TF-IDF vectorization, yang kemudian diukur kemiripannya menggunakan Cosine Similarity.
+2. Representasi Genre dengan TF-IDF
+Genre dari masing-masing film direpresentasikan sebagai vektor TF-IDF. Kata-kata umum (seperti "the", "and") dihapus dengan parameter stop_words='english' agar tidak memengaruhi hasil. Hasil dari proses ini adalah tfidf_matrix, yaitu representasi numerik dari genre semua film.
+3. Menghitung Cosine Similarity Antar Film
+Setelah mendapatkan TF-IDF matrix, digunakan cosine_similarity untuk menghitung seberapa mirip setiap film dengan film lainnya berdasarkan genre. Hasilnya adalah matriks simetri cosine_sim, yang menyimpan skor kemiripan antara setiap pasangan film.
+
+Dari kemiripan skor antar setiap pasang film nantinya akan diambil yang mendekati sebagai rekomendasi film kepada pengguna.
 
 #### Input 
 Input : Judul film, misalnya "Jumanji"
