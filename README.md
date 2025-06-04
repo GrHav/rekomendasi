@@ -52,7 +52,7 @@ Beberapa tahapan data preparation yang dilakukan:
   
 ## Modeling
 
-Model utama yang digunakan adalah Content-Based Filtering.
+Model utama yang digunakan adalah Content-Based Filtering menggunakan TF-IDF dan Cosine Similarity.
 #### Input 
 Input : Judul film, misalnya "Jumanji"
 #### Proses
