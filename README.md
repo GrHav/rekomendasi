@@ -65,6 +65,7 @@ Kekurangan:
 - Tidak menangkap makna konteks atau sinonim
 - Tidak mempertimbangkan urutan kata
 - Tidak bekerja baik pada data sangat besar tanpa preprocessing efisien
+  
 Parameter yang digunakan di dalam proyek ini adalah:
 - stop_words='english'. Dimana stop word yang dihilangkan adalah stop word dalam bahasa inggris.
 
