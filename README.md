@@ -37,7 +37,7 @@ Dataset yang digunakan adalah Movie Genre from its Poster dari [Kaggle](https://
 - IMDB Score: Skor film (tidak digunakan dalam model utama)
 - Poster: URL poster film (tidak digunakan dalam model utama)
 
-Dataset ini awalnya berisi lebih dari 10.000 entri, namun untuk keperluan demonstrasi dan efisiensi eksperimen, proyek ini hanya mengambil 200 data film teratas yang memiliki informasi genre dan judul yang lengkap.
+Dataset ini awalnya berisi lebih dari 10.000 entri, namun untuk keperluan demonstrasi dan efisiensi eksperimen, proyek ini hanya mengambil 200 data film (.head(200)) teratas yang memiliki informasi genre dan judul yang lengkap.
 
 Alasan menggunakan encoding='ISO-8859-1' pada saat membaca csv adalah untuk menghidari error yang ada dan dengan menggunakan encoding tersebut dapat lebih toleran terhadap karakter non-ASCII. 
 
