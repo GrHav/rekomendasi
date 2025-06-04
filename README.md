@@ -39,6 +39,8 @@ Dataset yang digunakan adalah Movie Genre from its Poster dari [Kaggle](https://
 
 Dataset ini awalnya berisi lebih dari 10.000 entri, namun untuk keperluan demonstrasi dan efisiensi eksperimen, proyek ini hanya mengambil 200 data film teratas yang memiliki informasi genre dan judul yang lengkap.
 
+Alasan menggunakan encoding='ISO-8859-1' pada saat membaca csv adalah untuk menghidari error yang ada dan dengan menggunakan encoding tersebut dapat lebih toleran terhadap karakter non-ASCII. 
+
 Exploratory Data Analysis (EDA):
 - Visualisasi data yang missing lumayan banyak pada kolom genre dan dan poster
 ## Data Preparation
@@ -117,6 +119,33 @@ Karena tidak tersedia data eksplisit dari pengguna (seperti rating), maka evalua
 - Precision: Mengukur seberapa relevan film yang direkomendasikan.
 - Recall: Mengukur seberapa banyak film relevan yang berhasil direkomendasikan dari seluruh kemungkinan film yang relevan.
 Evaluasi kuantitatif dengan metrik seperti RMSE atau MAE tidak dilakukan karena model tidak memprediksi rating.
+
+## Memnjawab Problem Statements
+1. Bagaimana membantu pengguna menemukan film yang relevan dan sesuai dengan minat mereka?
+- Sistem menggunakan teknik TF-IDF untuk mengekstrak fitur genre dan cosine similarity untuk menghitung kemiripan antar film. Dengan pendekatan ini, sistem mampu memberikan rekomendasi film yang memiliki genre serupa dengan film yang telah disukai sebelumnya.
+- Contoh: Pengguna mencari film “Jumanji”, sistem merekomendasikan film lain dengan genre petualangan dan fantasi seperti:
+      - Mighty Morphin Power Rangers: The Movie
+      - The Amazing Panda Adventure
+      - Free Willy 2: The Adventure Home
+Rekomendasi tersebut relevan karena berbagi genre yang serupa, sehingga sistem telah berhasil membantu pengguna menavigasi pilihan film secara lebih efisien.
+
+2. Bagaimana menyajikan rekomendasi film berdasarkan genre film yang telah disukai pengguna?
+- Genre merupakan satu-satunya fitur yang digunakan dalam sistem. TF-IDF mengubah informasi genre menjadi vektor numerik, dan cosine similarity mengukur kemiripan antar film berdasarkan vektor tersebut.
+-  Kelebihan pendekatan ini:
+       - Genre adalah fitur yang konsisten dan tersedia untuk hampir semua film
+       - Tidak memerlukan data pengguna atau interaksi historis
+       - Efektif dalam konteks cold-start problem untuk pengguna baru
+- Keterbatasan:
+Rekomendasi hanya berdasarkan genre, sehingga bisa kurang akurat bila pengguna menginginkan pertimbangan lain seperti alur cerita, sutradara, atau aktor.
+
+3. Bagaimana mengukur relevansi dan kemiripan antar film untuk menghasilkan rekomendasi yang akurat?
+- Pengukuran relevansi dan kemiripan dilakukan dengan cosine similarity terhadap vektor TF-IDF yang mewakili genre film.
+- Evaluasi Kualitatif:
+Manual inspection terhadap hasil rekomendasi menunjukkan bahwa film-film yang direkomendasikan memiliki genre yang serupa dan masuk akal secara tematis.
+-  Evaluasi Kuantitatif (Opsional - Eksploratif):
+     - Silhouette Score digunakan untuk mengevaluasi seberapa baik film dikelompokkan berdasarkan kemiripan genre.
+     - Hasil Silhouette Score = 0.234, yang meskipun tidak tinggi, menunjukkan ada struktur yang dapat dimanfaatkan dalam sistem.
+
 
 Referensi
 - Aggarwal, C. C. (2016). Recommender Systems: The Textbook. Springer.
