@@ -15,12 +15,10 @@ Referensi : Ricci, F., Rokach, L., & Shapira, B. (2015). Recommender Systems Han
 ### Problem Statements
 1. Bagaimana membantu pengguna menemukan film yang relevan dan sesuai dengan minat mereka?
 2. Bagaimana menyajikan rekomendasi film berdasarkan genre film yang telah disukai pengguna?
-3. Bagaimana mengukur relevansi dan kemiripan antar film untuk menghasilkan rekomendasi yang akurat?
 
 ### Goals
 1. Mengembangkan sistem rekomendasi berbasis konten yang dapat menyarankan film berdasarkan genre yang serupa.
 2. Menggunakan teknik TF-IDF dan cosine similarity untuk menghitung kemiripan antar film.
-3. Memberikan antarmuka pemanggilan fungsi yang sederhana untuk melakukan pencarian film berdasarkan masukan judul film.
 
 ### Solution statements
 - Content-Based Filtering: Sistem menyarankan film yang memiliki kemiripan genre dengan film yang telah dipilih pengguna.
@@ -37,7 +35,7 @@ Dataset yang digunakan adalah Movie Genre from its Poster dari [Kaggle](https://
 - IMDB Score: Skor film (tidak digunakan dalam model utama)
 - Poster: URL poster film (tidak digunakan dalam model utama)
 
-Dataset ini awalnya berisi lebih dari 10.000 entri, namun untuk keperluan demonstrasi dan efisiensi eksperimen, proyek ini hanya mengambil 200 data film (.head(200)) teratas yang memiliki informasi genre dan judul yang lengkap.
+Dataset ini awalnya berisi lebih dari 10.000 entri yaitu 40108 entri dan 6 kolom, namun untuk keperluan demonstrasi dan efisiensi eksperimen, proyek ini hanya mengambil 200 data film (.head(200)) teratas yang memiliki informasi genre dan judul yang lengkap.
 
 Alasan menggunakan encoding='ISO-8859-1' pada saat membaca csv adalah untuk menghidari error yang ada dan dengan menggunakan encoding tersebut dapat lebih toleran terhadap karakter non-ASCII. 
 
