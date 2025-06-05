@@ -105,12 +105,18 @@ Input : Judul film, misalnya "Jumanji"
 - Urutkan berdasarkan skor kemiripan
 - Ambil `n` film teratas (kecuali film itu sendiri)
 #### Output
+Film input: Jumanji (1995)
+Genre input : {'action', 'adventure', 'family'}
+
 Rekomendasi 5 film dengan genre yang paling mirip, contohnya:
 - Mighty Morphin Power Rangers: The Movie (1995) -> {action, adventure, family}
 - Across the Sea of Time (1995) -> {adventure, family, drama}
 - The Amazing Panda Adventure (1995) -> {adventure, family, drama}
 - Free Willy 2: The Adventure Home (1995) -> {adventure, family, drama}
 - Kids of the Round Table (1995) -> {family, adventure, comedy}
+
+Precision: 0.73
+Recall: 1.00
 
 Kelebihan
 - Tidak memerlukan data pengguna atau feedback historis
