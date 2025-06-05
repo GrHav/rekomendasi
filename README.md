@@ -52,6 +52,8 @@ Beberapa tahapan data preparation yang dilakukan:
 - Matriks TF-IDF: mengubah kolom genre pada data menjadi vektor numerik menggunakan TF-IDF (tfidf_matrix = tfidf.fit_transform(df['Genre']))
 - Cosine Similarity Calculation: Menghitung kemiripan antar film menggunakan cosine similarity dari matriks TF-IDF yang baru dibuat (cosine_sim = cosine_similarity(tfidf_matrix, tfidf_matrix)).
 - Preprocessing Judul Film: Membersihkan judul dari tahun rilis agar fungsi pencarian tidak terpengaruh format nama dengan membuat fungsi clean_title untuk membersihkannya.
+- Pembuatan series baru dengan nama `indices` dengan parameter berupa df.index yaitu indeks baris dari dataframe, df['clean_title'] berupa judul film yang telah dibersihkan. Artinya menciptakan mapping dari judul film (clean_title) ke indeks DataFrame. Baris ini membuat sebuah struktur pencarian cepat, agar kita bisa dengan mudah mencari index baris dari sebuah film berdasarkan judulnya.
+- Kemudian pada `indices` dilakukan drop duplikat.
 
 ### TF-IDF 
 Fungsi utama : digunakan untuk mengukur kepentingan suatu kata dalam sebuah dokumen relatif terhadap seluruh kumpulan dokumen.
